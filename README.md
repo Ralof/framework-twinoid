@@ -9,6 +9,8 @@ Framework de développement pour une utilisation simple des API Twinoid.
 * **Gestion des erreurs** - Affichage des erreurs de requêtes.
 
 ##Configuration
+* Assurer vous que l'extension OPENSSL est activée dans `php.ini` (sans ;)
+extension=php_openssl.dll
 * Ajouter vos informations d'application dans `Config/App.inc.php`
 ```php
     <?php
