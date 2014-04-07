@@ -45,7 +45,7 @@ Abstract class API
     $json = file_get_contents($url);
     $json = json_decode($json);
 
-    if(is_callable($json->error, true))
+    if(method_exists($json, 'error'))
     {
       $this->_errors[] = $json->error;
       $this->_errorsDescriptions[] = $json->error_description;
