@@ -48,12 +48,28 @@ Abstract class SessionManager
         self::getConnection($_GET['code']);
       }
     }
+    else
+    {
+      self::refresh();
+    }
   }
 
   //Suppression de la session en cours (Déconnexion)
   public static function deleteConnection()
   {
     $_SESSION['authTwinoid'] = null;
+  }
+
+  public static function refresh()
+  {
+    if(self::isConnected())
+    {
+      if($_SESSION['authTwinoid']->isExpired())
+      {
+        self::deleteConnection();
+        self::createConnection();
+      }
+    }
   }
 }
 

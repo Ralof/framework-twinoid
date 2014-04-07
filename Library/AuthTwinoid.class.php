@@ -10,6 +10,7 @@ class AuthTwinoid
   private $_clientSecret;       //Clé secrète
   private $_redirectUri;        //URL de redirection
   private $_token;              //Token
+  private $_expireTime;         //Timestamp max du token
   private $_errors;             //Erreurs rencontrées
 
   //Constructeur
@@ -19,6 +20,7 @@ class AuthTwinoid
     $this->_clientSecret = $clientSecret;
     $this->_redirectUri = $redirectUri;
     $this->_token = null;
+    $this->_expireTime = null;
     $this->_errors = null;
   }
 
@@ -39,6 +41,7 @@ class AuthTwinoid
     $json = file_get_contents($url, false, $context);
     $json = json_decode($json);
 
+    $this->_expireTime = time() + $json->expires_in;
     $this->_token = $json->access_token;
   }
 
@@ -52,6 +55,12 @@ class AuthTwinoid
   public function getErrors()
   {
     return $this->_errors;
+  }
+
+  //Retourne si le token est expiré
+  public function isExpired()
+  {
+    return time() >= $this->_expireTime;
   }
 }
 
