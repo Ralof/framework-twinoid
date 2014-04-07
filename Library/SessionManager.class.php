@@ -24,7 +24,7 @@ Abstract class SessionManager
   public static function getConnection($code)
   {
     $authTwinoid = new AuthTwinoid(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
-    $authTwinoid->initialize($_GET['code']);
+    $authTwinoid->initialize($code);
 
     //Vérification simple si l'authentification est réussie
     if(!($authTwinoid->getErrors()))
