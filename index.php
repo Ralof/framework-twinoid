@@ -43,5 +43,35 @@
       }
     }
 
+    //Gestion de l'API Mush
+    $mushApi = new MushAPI($authTwinoid->getToken());
+    Debug::showVariable($mushApi->getMe());
+
+    //Gestion des erreurs
+    if($mushApi->errors())
+    {
+      $description = $mushApi->getErrorsDescriptions();
+
+      foreach($mushApi->getErrors() as $key => $error)
+      {
+        echo $error . ' : ' . $description[$key] . '<br/>';
+      }
+    }
+
+    //Gestion de l'API Twinoid
+    $twinoidApi = new TwinoidAPI($authTwinoid->getToken());
+    Debug::showVariable($twinoidApi->getMe());
+
+    //Gestion des erreurs
+    if($twinoidApi->errors())
+    {
+      $description = $twinoidApi->getErrorsDescriptions();
+
+      foreach($twinoidApi->getErrors() as $key => $error)
+      {
+        echo $error . ' : ' . $description[$key] . '<br/>';
+      }
+    }
+
   }
 ?>
