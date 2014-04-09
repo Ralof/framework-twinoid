@@ -8,6 +8,7 @@
 
 Abstract class SessionManager
 {
+  
   //Retourne si l'utilisateur est connecté
   public static function isConnected()
   {
@@ -17,7 +18,7 @@ Abstract class SessionManager
   //Redirection vers l'authentification Twinoid
   public static function tryConnection()
   {
-    header("Location: https://twinoid.com/oauth/auth?response_type=code&client_id=".CLIENT_ID."&redirect_uri=".REDIRECT_URI."&scope=www.hordes.fr,contacts&state=connexion");
+    header("Location: https://twinoid.com/oauth/auth?response_type=code&client_id=".CLIENT_ID."&redirect_uri=".REDIRECT_URI."&scope=".SCOPE."&state=connexion");
   }
 
   //Tentative d'authentification à partir du code reçu

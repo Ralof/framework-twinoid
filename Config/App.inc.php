@@ -1,8 +1,9 @@
 <?php
 
-  //Constantes concernant les paramètres de l'application
-  define('REDIRECT_URI', "");
-  define('CLIENT_ID', );
-  define('CLIENT_SECRET', "");
+  //Constantes concernant l'application
+  define('REDIRECT_URI', "http://exemple.com");
+  define('CLIENT_ID', 0);
+  define('CLIENT_SECRET', "cle secrete");
+  define('SCOPE', "contacts,groups,applications,www.hordes.fr,mush.vg")
 
 ?>
