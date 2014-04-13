@@ -10,19 +10,43 @@ class HordesAPI extends API
   const URL = "http://www.hordes.fr/tid/graph/";
 
   //Retourne un booléen si une attaque est en cours
-  public function isAttack()
+  public function isAttack($update = false)
   {
-    $url = self::URL."status?access_token=".$this->_token."";
+    if($update == true)
+    {
+      $url = self::URL."status?access_token=".$this->_token."";
     
-    return $this->jsonCall($url)->attack;
+      $isAttack = $this->jsonCall($url)->attack;
+    }
+    else
+    {
+      $isAttack = !$this->_available;
+    }
+
+    return $isAttack;
   }
 
   //Retourne un booléen si une maintenance est en cours
-  public function isMaintenance()
+  public function isMaintenance($update = false)
   {
-    $url = self::URL."status?access_token=".$this->_token."";
+    if($update == true)
+    {
+      $url = self::URL."status?access_token=".$this->_token."";
     
-    return $this->jsonCall($url)->maintain;
+      return $this->jsonCall($url)->maintain;
+    }
+    else
+    {
+      $isMaintain = !$this->_available;
+    }
+
+    return $isMaintain;
+  }
+
+  //Retourne un booléen correspondant à la disponibilité de l'API
+  public function isAvailable()
+  {
+    return $this->_available;
   }
 
   //Récupère les informations sur l'utilisateur actuellement connecté

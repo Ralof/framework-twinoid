@@ -12,6 +12,8 @@ Abstract class API
   protected $_token;                    //Token de connexion
   protected $_errors;                   //Erreurs recontrées
   protected $_errorsDescriptions;       //Descriptions des erreurs rencontrées
+  protected $_available;                //Booléen si l'API est disponible
+  protected $_numberCalls;              //Nombre de requêtes passées à l'API
 
   //Constructeur à partir d'un token
   public function __construct($token)
@@ -19,6 +21,7 @@ Abstract class API
     $this->_token = $token;
     $this->_errors = null;
     $this->_errorsDescriptions = null;
+    $this->_available = true;
   }
 
   //Retourne une booléen à savoir s'il y a des erreurs
@@ -39,17 +42,30 @@ Abstract class API
     return $this->_errorsDescriptions;
   }
 
+  //Retourne le nombre de requêtes qui ont été effectuées vers l'API
+  public function getNumberCalls()
+  {
+    return $this->_numberCalls;
+  }
+
   //Effectue une requête JSON
   protected function jsonCall($url)
   {
     $json = file_get_contents($url);
     $json = json_decode($json);
 
-    if(method_exists($json, 'error'))
+    if(property_exists($json, 'error'))
     {
       $this->_errors[] = $json->error;
       $this->_errorsDescriptions[] = $json->error_description;
+
+      if($json->error == "server_error")
+      {
+        $this->_available = false;
+      }
     }
+
+    $this->_numberCalls++;
 
     return $json;
   }
