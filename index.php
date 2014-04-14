@@ -29,9 +29,6 @@
     //Gestion de l'API Hordes
     $hordesApi = new HordesAPI($authTwinoid->getToken());
     
-    Debug::showVariable($hordesApi->getMe());
-    Debug::showVariable($hordesApi->getMap(352736));        //ID de votre ville, seuls les citoyens d'une ville donnée peuvent accéder à leurs informations.
-
     //Gestion des erreurs
     if($hordesApi->errors())
     {
@@ -45,7 +42,7 @@
 
     //Gestion de l'API Mush
     $mushApi = new MushAPI($authTwinoid->getToken());
-    Debug::showVariable($mushApi->getMe());
+    //Debug::showVariable($mushApi->getMe());
 
     //Gestion des erreurs
     if($mushApi->errors())
@@ -60,7 +57,7 @@
 
     //Gestion de l'API Twinoid
     $twinoidApi = new TwinoidAPI($authTwinoid->getToken());
-    Debug::showVariable($twinoidApi->getMe());
+    //Debug::showVariable($twinoidApi->getMe());
 
     //Gestion des erreurs
     if($twinoidApi->errors())

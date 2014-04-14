@@ -6,7 +6,7 @@
   /!\ Attention, cette classe ne peut pas être instanciée. /!\
 */
 
-Abstract class SessionManager
+abstract class SessionManager
 {
   
   //Retourne si l'utilisateur est connecté

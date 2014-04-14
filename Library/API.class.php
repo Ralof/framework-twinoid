@@ -7,7 +7,7 @@
 
   /!\ Attention, cette classe ne peut pas être instanciée. Elle sert seulement de classe parente pour de futurs API /!\
 */
-Abstract class API
+abstract class API
 {
   protected $_token;                    //Token de connexion
   protected $_errors;                   //Erreurs recontrées
@@ -22,6 +22,7 @@ Abstract class API
     $this->_errors = null;
     $this->_errorsDescriptions = null;
     $this->_available = true;
+    $this->_numberCalls = 0;
   }
 
   //Retourne une booléen à savoir s'il y a des erreurs
@@ -65,7 +66,7 @@ Abstract class API
       }
     }
 
-    $this->_numberCalls++;
+    ++$this->_numberCalls;
 
     return $json;
   }
