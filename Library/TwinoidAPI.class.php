@@ -12,15 +12,15 @@ class TwinoidAPI extends API
   //Récupère les informations de l'utilisateur actuellement connecté
   public function getMe($fields = "id,name,picture,locale,title,oldNames,sites,like,gender,birthday,city,country,desc,status,contacts,groups,devApps")
   {
-    $url = self::URL."me?fields=".$fields."&access_token=".$this->_token."";
-    
+    $url = self::URL."me?fields=".rawurlencode($fields)."&access_token=".$this->_token."";
+
     return $this->jsonCall($url);
   }
 
   //Récupère les informations d'un utilisateur spécifié
   public function getUser($userId, $fields = "id,name,picture,locale,title,oldNames,sites,like,gender,birthday,city,country,desc,status")
   {
-    $url = self::URL."user/".$userId."?fields=".$fields."&access_token=".$this->_token."";
+    $url = self::URL."user/".$userId."?fields=".rawurlencode($fields)."&access_token=".$this->_token."";
     
     return $this->jsonCall($url);
   }
