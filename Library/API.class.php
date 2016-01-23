@@ -57,13 +57,11 @@ abstract class API
 
     if(property_exists($json, 'error'))
     {
-      $this->_errors[] = $json->error;
-      $this->_errorsDescriptions[] = $json->error_description;
-
       if($json->error == "server_error")
       {
         $this->_available = false;
       }
+      throw new TwinoidAPIException($json->error.($json->error_description ? ' - '.$json->error_description: ''));
     }
 
     ++$this->_numberCalls;
