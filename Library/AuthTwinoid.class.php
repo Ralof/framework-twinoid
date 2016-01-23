@@ -12,13 +12,15 @@ class AuthTwinoid
   private $_token;              //Token
   private $_expireTime;         //Timestamp max du token
   private $_errors;             //Erreurs rencontrées
+  private $_scope;
 
   //Constructeur
-  public function __construct($clientId, $clientSecret, $redirectUri)
+  public function __construct($clientId, $clientSecret, $redirectUri, $scope = null)
   {
     $this->_clientId = $clientId;
     $this->_clientSecret = $clientSecret;
     $this->_redirectUri = $redirectUri;
+    $this->_scope = $scope;
     $this->_token = null;
     $this->_expireTime = null;
     $this->_errors = null;
@@ -44,7 +46,16 @@ class AuthTwinoid
     $this->_expireTime = time() + $json->expires_in;
     $this->_token = $json->access_token;
   }
-
+  //Accesseur de l'url de redirection
+  public function getAuthorizationUri()
+  {
+    $url = "https://twinoid.com/oauth/auth?response_type=code&client_id=".$this->_clientId."&redirect_uri=".$this->_redirectUri."&state=connexion";
+    if ($this->_scope)
+    {
+      $url .= "&scope=" . $this->_scope;
+    }
+    return $url;
+  }
   //Accesseur du token
   public function getToken()
   {
