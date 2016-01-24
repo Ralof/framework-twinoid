@@ -61,7 +61,7 @@ abstract class API
       {
         $this->_available = false;
       }
-      throw new TwinoidAPIException($json->error.($json->error_description ? ' - '.$json->error_description: ''));
+      throw new TwinoidAPIException($json->error.(isset($json->error_description) ? ' - '.$json->error_description: ''));
     }
 
     ++$this->_numberCalls;
