@@ -1,0 +1,17 @@
+{
+  "name": "ralof/framework-twinoid",
+  "description": "Framework de développement pour une utilisation simple des API Twinoid.",
+  "authors": [
+    {
+      "name": "ralof",
+      "email": "ralof@users.noreply.github.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {},
+  "autoload": {
+    "classmap": [
+      "Library/"
+    ]
+  }
+}
