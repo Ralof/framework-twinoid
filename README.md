@@ -1,8 +1,8 @@
-#Framework Twinoid
+# Framework Twinoid
 
 Framework de développement pour une utilisation simple des API Twinoid.
 
-##Fonctionnalités
+## Fonctionnalités
 * **Gestion de session** - Vous permet de garder en session l'authentification Twinoid (Le token).
 * **Gestion de l'authentification Twinoid** - S'occupe de la redirection pour l'authentification Twinoid et la récupération du Token
 * **Gestion de l'API Twinoid** - S'occupe d'effectuer les requêtes à l'API Twinoid avec le token précédemment obtenu.
@@ -10,7 +10,7 @@ Framework de développement pour une utilisation simple des API Twinoid.
 * **Gestion de l'API Mush** - S'occupe d'effectuer les requêtes à l'API Mush avec le token précédemment obtenu.
 * **Gestion des erreurs** - Affichage des erreurs de requêtes.
 
-##Configuration
+## Configuration
 * Assurer vous que l'extension OpenSSL est activée dans `php.ini` (sans ; devant)
 ```
 extension=php_openssl.dll
@@ -25,7 +25,7 @@ extension=php_openssl.dll
     ?>
 ```
 
-##Exemple
+## Exemple
 Dans notre cas, nous allons récupérer les informations du joueur actuellement connecté.
 ```php
     <?php
@@ -36,7 +36,7 @@ Dans notre cas, nous allons récupérer les informations du joueur actuellement 
     ?>
 ```
 
-###Pour connaître les objets de retour et les valeurs associées
+### Pour connaître les objets de retour et les valeurs associées
 * [Twinoid](http://twinoid.com/developers/api)
 * [Hordes](http://www.hordes.fr/tid/api)
 * [Mush](http://mush.vg/tid/api)
